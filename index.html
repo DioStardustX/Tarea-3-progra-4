@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Calculadoras</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="temp">
+         <h1>Calculadora de Conversión de Temperatura</h1>
+    <label for="celsius">Temperatura en grados Celsius:</label>
+    <input type="text" id="celsius">
+    <button onclick="convertirTemperatura()">Convertir a Fahrenheit</button>
+    <button onclick="convertirAKelvin()">Convertir a Kelvin</button>
+    <p id="resultadoTemperatura"></p>
+ 
+    </div>
+  
+    <div class="dis">
+ <h1>Calculadora de Conversión de Distancia</h1>
+    <label for="kilometros">Distancia en kilómetros:</label>
+    <input type="text" id="kilometros">
+    <button onclick="convertirAMillas()">Convertir a Millas</button>
+    <button onclick="convertirAMetros()">Convertir a Metros</button>
+    <p id="resultadoDistancia"></p>
+
+    </div>  
+   
+<div class="imc">
+ <h1>Calculadora de Índice de Masa Corporal (IMC)</h1>
+    <label for="peso">Peso en kilogramos:</label>
+    <input type="text" id="peso">
+    <label for="altura">Altura en metros:</label>
+    <input type="text" id="altura">
+    <button onclick="calcularIMC()">Calcular IMC</button>
+    <p id="resultadoIMC"></p>
+
+</div>
+   
+
+    <script>
+        function convertirTemperatura() {
+            const celsius = parseFloat(document.getElementById("celsius").value);
+            if (!isNaN(celsius)) {
+                const fahrenheit = (celsius * 9/5) + 32;
+                document.getElementById("resultadoTemperatura").textContent = `Fahrenheit: ${fahrenheit.toFixed(2)}`;
+            } else {
+                document.getElementById("resultadoTemperatura").textContent = "Por favor, ingrese una temperatura válida en Celsius.";
+            }
+        }
+
+        function convertirAKelvin() {
+            const celsius = parseFloat(document.getElementById("celsius").value);
+            if (!isNaN(celsius)) {
+                const kelvin = celsius + 273.15;
+                document.getElementById("resultadoTemperatura").textContent = `Kelvin: ${kelvin.toFixed(2)}`;
+            } else {
+                document.getElementById("resultadoTemperatura").textContent = "Por favor, ingrese una temperatura válida en Celsius.";
+            }
+        }
+
+        function convertirAMillas() {
+            const kilometros = parseFloat(document.getElementById("kilometros").value);
+            if (!isNaN(kilometros)) {
+                const millas = kilometros * 0.621371;
+                document.getElementById("resultadoDistancia").textContent = `Millas: ${millas.toFixed(2)}`;
+            } else {
+                document.getElementById("resultadoDistancia").textContent = "Por favor, ingrese una distancia válida en kilómetros.";
+            }
+        }
+
+        function convertirAMetros() {
+            const kilometros = parseFloat(document.getElementById("kilometros").value);
+            if (!isNaN(kilometros)) {
+                const metros = kilometros * 1000;
+                document.getElementById("resultadoDistancia").textContent = `Metros: ${metros.toFixed(2)}`;
+            } else {
+                document.getElementById("resultadoDistancia").textContent = "Por favor, ingrese una distancia válida en kilómetros.";
+            }
+        }
+
+        function calcularIMC() {
+            const peso = parseFloat(document.getElementById("peso").value);
+            const altura = parseFloat(document.getElementById("altura").value);
+            if (!isNaN(peso) && !isNaN(altura) && peso > 0 && altura > 0) {
+                const imc = peso / (altura * altura);
+                document.getElementById("resultadoIMC").textContent = `IMC: ${imc.toFixed(2)}`;
+            } else {
+                document.getElementById("resultadoIMC").textContent = "Por favor, ingrese valores válidos de peso y altura.";
+            }
+        }
+    </script>
+</body>
+</html>
